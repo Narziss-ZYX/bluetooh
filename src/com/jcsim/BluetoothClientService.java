@@ -81,6 +81,8 @@ public class BluetoothClientService {
                                 System.out.println("===========start=============");
                                 System.out.println(df.format(new Date())+"->"+s.trim());
                                 System.out.println("------------end------------");
+                                outputStream.write("123456".getBytes());  //发送
+                                outputStream.flush();
 
 //                                inputStream.close();
 //                                onClose();
