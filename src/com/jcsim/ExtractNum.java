@@ -1,6 +1,5 @@
 package com.jcsim;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -9,10 +8,10 @@ import java.util.regex.Pattern;
 
 public class ExtractNum {
     //全局变量
-    public static float temp;
-    public static short ax, ay, az; //加速度
-    public static short gx, gy, gz; //角速度
-    public static float fAX, fAY, fAZ; // 三个姿态角（pitch俯仰角, roll滚转角, yaw偏航角）
+    public static float temp=0;
+    public static short ax, ay, az=0; //加速度
+    public static short gx, gy, gz=0; //角速度
+    public static float fAX, fAY, fAZ=0; // 三个姿态角（pitch俯仰角, roll滚转角, yaw偏航角）
     public static int Warn;
     public static int g_mpustep; //震动检测灵敏度
     public static int g_warntime; //报警时长
@@ -68,9 +67,7 @@ public class ExtractNum {
 //            System.out.println("小数");
 //            return false;
 //        }
-
     }
-
     public static boolean isNumeric(String str) {
 
         for (int i = str.length(); --i >= 0; ) {
@@ -82,14 +79,12 @@ public class ExtractNum {
         return true;
     }
 
-    public static void main(String[] args) {
-        String str = "T: 24.9,A:   774   1350  16734,G:    -1     -1      1,Z:   0.1    0.0    0.4,S:  28  4  30  0.1,W:0\n";
+    public static void ExtractNumFromString(String str){
         String rgex = "T:(.*?),";
         String[] list;
         String result = getSubUtilSimple(str, rgex);
         list = result.split(" ");
         temp = Float.parseFloat(list[list.length - 1]);  //温度数据获取
-
         //加速度
         rgex = "A:(.*?),";
         result = getSubUtilSimple(str, rgex);
@@ -106,7 +101,6 @@ public class ExtractNum {
                     az = Short.parseShort(list[i]);
             }
         }
-
         //角速度
         rgex = "G:(.*?),";
         result = getSubUtilSimple(str, rgex);
@@ -123,7 +117,6 @@ public class ExtractNum {
                     gz = Short.parseShort(list[i]);
             }
         }
-
         //姿态角
         rgex = "Z:(.*?),";
         result = getSubUtilSimple(str, rgex);
@@ -140,7 +133,6 @@ public class ExtractNum {
                     fAZ = Float.parseFloat(list[i]);
             }
         }
-
         //参数
         rgex = "S:(.*?),";
         result = getSubUtilSimple(str, rgex);
@@ -159,7 +151,6 @@ public class ExtractNum {
                     g_upstep = Float.parseFloat(list[i]);
             }
         }
-
         //报警
         rgex = "W:(.*?)\n";
         result = getSubUtilSimple(str, rgex);
@@ -169,4 +160,9 @@ public class ExtractNum {
     }
 
 
+
+    public static void main(String[] args) {
+        String str = "T: 24.9,A:   774   1350  16734,G:    -1     -1      1,Z:   0.1    0.0    0.4,S:  28  4  30  0.1,W:0\n";
+        ExtractNumFromString(str);
+    }
 }
