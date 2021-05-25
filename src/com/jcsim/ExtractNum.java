@@ -8,15 +8,26 @@ import java.util.regex.Pattern;
 
 public class ExtractNum {
     //全局变量
-    public static float temp=0;
-    public static short ax, ay, az=0; //加速度
-    public static short gx, gy, gz=0; //角速度
-    public static float fAX, fAY, fAZ=0; // 三个姿态角（pitch俯仰角, roll滚转角, yaw偏航角）
+    public static float temp = 0;
+    public static short ax, ay, az = 0; //加速度
+    public static short gx, gy, gz = 0; //角速度
+    public static float fAX, fAY, fAZ = 0; // 三个姿态角（pitch俯仰角, roll滚转角, yaw偏航角）
     public static int Warn;
     public static int g_mpustep; //震动检测灵敏度
     public static int g_warntime; //报警时长
     public static int tempLmt; //震动检测灵敏度
     public static float g_upstep; //上传时间
+    //下发
+    public static int config_mpustep;
+    public static int config_warntime; //报警时长
+    public static int config_tempLmt; //震动检测灵敏度
+    public static Double config_upstep; //上传时间
+    public static int g_bUpingFlag = 0;
+    //控制上传标志位
+    public static boolean StartButtonFlag = false;
+    public static boolean CloseButtonFlag = false;
+    //设置参数标志位
+    public static boolean ConfigNumFlag = false;
 
     /**
      * 正则表达式匹配两个指定字符串中间的内容
@@ -68,6 +79,7 @@ public class ExtractNum {
 //            return false;
 //        }
     }
+
     public static boolean isNumeric(String str) {
 
         for (int i = str.length(); --i >= 0; ) {
@@ -79,7 +91,7 @@ public class ExtractNum {
         return true;
     }
 
-    public static void ExtractNumFromString(String str){
+    public static void ExtractNumFromString(String str) {
         String rgex = "T:(.*?),";
         String[] list;
         String result = getSubUtilSimple(str, rgex);
@@ -156,9 +168,8 @@ public class ExtractNum {
         result = getSubUtilSimple(str, rgex);
         list = result.split(" ");
         Warn = Integer.parseInt(list[list.length - 1]);  //温度数据获取
-        System.out.format("T:%4f,A:%6d %6d %6d,G:%6d %6d %6d,Z:%5f %5f %5f,S:%4d %4d %4d %f,W:%d\n", temp, ax, ay, az, gx, gy, gz, fAX, fAY, fAZ,tempLmt,g_mpustep,g_warntime,g_upstep, Warn);
+        System.out.format("T:%4f,A:%6d %6d %6d,G:%6d %6d %6d,Z:%5f %5f %5f,S:%4d %4d %4d %f,W:%d\n", temp, ax, ay, az, gx, gy, gz, fAX, fAY, fAZ, tempLmt, g_mpustep, g_warntime, g_upstep, Warn);
     }
-
 
 
     public static void main(String[] args) {

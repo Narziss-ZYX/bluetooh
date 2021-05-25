@@ -1,0 +1,569 @@
+JFDML JFormDesigner: "7.0.3.0.337" Java: "11.0.8" encoding: "UTF-8"
+
+new FormModel {
+	"i18n.autoExternalize": true
+	"i18n.bundlePackage": "com.jcsim"
+	"i18n.bundleName": "form"
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+			name: "this"
+			"title": "BlueThooth"
+			add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
+				name: "tabbedPane2"
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+					name: "dataPane"
+					"border": &EtchedBorder0 new javax.swing.border.EtchedBorder( 1, null, null )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+						name: "tempPanel"
+						"border": new javax.swing.border.TitledBorder( &EtchedBorder1 new javax.swing.border.EtchedBorder( 1, null, null ), "温度", 2, 0, new java.awt.Font( "华光粗圆_CNKI", 0, 14 ), sfield java.awt.SystemColor activeCaption )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "tempLabel"
+							"text": new FormMessage( null, "tempLabel.text" )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"x": 26
+							"y": 26
+							"height": 30
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "tempButton"
+							"text": "0"
+							"autoscrolls": true
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "tempButtonActionPerformed", true ) )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"x": 65
+							"y": 30
+							"width": 75
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "tempUnitLabel"
+							"text": new FormMessage( null, "tempUnitLabel.text" )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"x": 150
+							"y": 26
+							"height": 30
+						} )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 10
+						"y": 20
+						"width": 188
+						"height": 68
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+						name: "warnPanel"
+						"border": new javax.swing.border.TitledBorder( #EtchedBorder1, "报警状态", 2, 0, new java.awt.Font( "华光粗圆_CNKI", 0, 14 ), sfield java.awt.SystemColor activeCaption )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "warnStaLabel"
+							"text": new FormMessage( null, "warnStaLabel.text" )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"x": 37
+							"y": 26
+							"height": 30
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "warnTextField"
+							"horizontalAlignment": 0
+							"editable": false
+							addEvent( new FormEvent( "java.beans.PropertyChangeListener", "propertyChange", "warnTextFieldPropertyChange", true, "foreground" ) )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"x": 100
+							"y": 30
+							"width": 51
+						} )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"width": 188
+						"height": 68
+						"x": 200
+						"y": 20
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+						name: "accelerationPanel"
+						"border": new javax.swing.border.TitledBorder( &EtchedBorder2 new javax.swing.border.EtchedBorder( 1, null, null ), "三轴加速度", 2, 0, new java.awt.Font( "华光粗圆_CNKI", 0, 14 ), sfield java.awt.SystemColor activeCaption )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "axLabel"
+							"text": new FormMessage( null, "axLabel.text" )
+							"font": &SwingDerivedFont0 new com.jformdesigner.model.SwingDerivedFont( null, 0, 6, false )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"x": 55
+							"y": 20
+							"width": 20
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "axButton"
+							"text": new FormMessage( null, "axButton.text" )
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "axButtonActionPerformed", true ) )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"x": 30
+							"y": 45
+							"width": 75
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "ayButton"
+							"text": new FormMessage( null, "ayButton.text" )
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "ayButtonActionPerformed", true ) )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"x": 150
+							"y": 45
+							"width": 80
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "azButton"
+							"text": new FormMessage( null, "azButton.text" )
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "azButtonActionPerformed", true ) )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"x": 275
+							"y": 45
+							"width": 80
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "ayLabel"
+							"text": new FormMessage( null, "ayLabel.text" )
+							"font": #SwingDerivedFont0
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"width": 20
+							"height": 24
+							"x": 180
+							"y": 20
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "azLabel"
+							"text": new FormMessage( null, "azLabel.text" )
+							"font": #SwingDerivedFont0
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"width": 20
+							"height": 24
+							"x": 305
+							"y": 20
+						} )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"width": 379
+						"height": 85
+						"x": 10
+						"y": 105
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+						name: "angvPanel"
+						"border": new javax.swing.border.TitledBorder( #EtchedBorder2, "三轴角速度", 2, 0, new java.awt.Font( "华光粗圆_CNKI", 0, 14 ), sfield java.awt.SystemColor activeCaption )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "gxLabel"
+							"text": new FormMessage( null, "gxLabel.text" )
+							"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 5, false )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"x": 55
+							"y": 20
+							"width": 20
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "gxButton"
+							"text": new FormMessage( null, "gxButton.text" )
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "gxButtonActionPerformed", true ) )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"x": 30
+							"y": 45
+							"width": 75
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "gyButton"
+							"text": new FormMessage( null, "gyButton.text" )
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "gyButtonActionPerformed", true ) )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"x": 150
+							"y": 45
+							"width": 80
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "gzButton"
+							"text": new FormMessage( null, "gzButton.text" )
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "gzButtonActionPerformed", true ) )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"x": 275
+							"y": 45
+							"width": 80
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "gyLabel"
+							"text": new FormMessage( null, "gyLabel.text" )
+							"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 5, false )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"width": 25
+							"height": 24
+							"x": 180
+							"y": 20
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "gzLabel"
+							"text": new FormMessage( null, "gzLabel.text" )
+							"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 5, false )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"width": 20
+							"height": 24
+							"x": 305
+							"y": 20
+						} )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"width": 379
+						"height": 85
+						"x": 10
+						"y": 205
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+						name: "accelerationPanel4"
+						"border": new javax.swing.border.TitledBorder( #EtchedBorder2, "姿态角", 2, 0, new java.awt.Font( "华光粗圆_CNKI", 0, 14 ), sfield java.awt.SystemColor activeCaption )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "fAXLabel"
+							"text": new FormMessage( null, "fAXLabel.text" )
+							"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 1, false )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"x": 45
+							"y": 25
+							"width": 45
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "fAXButton"
+							"text": new FormMessage( null, "fAXButton.text" )
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "fAXButtonActionPerformed", true ) )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"x": 30
+							"y": 45
+							"width": 75
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "fAYButton"
+							"text": new FormMessage( null, "fAYButton.text" )
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "fAYButtonActionPerformed", true ) )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"x": 150
+							"y": 45
+							"width": 80
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "fAZButton"
+							"text": new FormMessage( null, "fAZButton.text" )
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "fAZButtonActionPerformed", true ) )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"x": 275
+							"y": 45
+							"width": 80
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "fAYLabel"
+							"text": new FormMessage( null, "fAYLabel.text" )
+							"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 1, false )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"x": 170
+							"y": 25
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "fAZLabel"
+							"text": new FormMessage( null, "fAZLabel.text" )
+							"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 1, false )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"x": 295
+							"y": 25
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "angUnitLabel1"
+							"text": new FormMessage( null, "angUnitLabel1.text" )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"x": 105
+							"y": 50
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "angUnitLabel2"
+							"text": new FormMessage( null, "angUnitLabel2.text" )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"x": 230
+							"y": 50
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "angUnitLabel3"
+							"text": new FormMessage( null, "angUnitLabel3.text" )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"x": 355
+							"y": 50
+						} )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"width": 379
+						"height": 85
+						"x": 10
+						"y": 300
+					} )
+				}, new FormLayoutConstraints( null ) {
+					"title": new FormMessage( null, "dataPane.tab.title" )
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+					name: "configPane2"
+					"border": #EtchedBorder0
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+						name: "configPanel"
+						"border": new javax.swing.border.TitledBorder( &EtchedBorder3 new javax.swing.border.EtchedBorder( 1, null, null ), "i18nKey=configPanel.border", 4, 0, new java.awt.Font( "华光粗圆_CNKI", 0, 14 ), sfield java.awt.SystemColor activeCaption )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "tempLmtLabel"
+							"text": new FormMessage( null, "tempLmtLabel.text" )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"x": 25
+							"y": 25
+							"width": 72
+							"height": 30
+						} )
+						add( new FormComponent( "javax.swing.JSpinner" ) {
+							name: "tempLmtSpinner"
+							"model": new javax.swing.SpinnerNumberModel( 30, 0, 90, 1 )
+							addEvent( new FormEvent( "javax.swing.event.ChangeListener", "stateChanged", "tempLmtSpinnerStateChanged", true ) )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"x": 115
+							"y": 25
+							"width": 126
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "tempLmtUnitLabel"
+							"text": new FormMessage( null, "tempLmtUnitLabel.text" )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"x": 245
+							"y": 25
+							"height": 30
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "mpuStepLabel"
+							"text": new FormMessage( null, "mpuStepLabel.text" )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"x": 25
+							"y": 60
+							"height": 30
+						} )
+						add( new FormComponent( "javax.swing.JSpinner" ) {
+							name: "mpuStepSpinner"
+							"model": new javax.swing.SpinnerNumberModel( 7, 0, 9, 1 )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"x": 115
+							"y": 60
+							"width": 126
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "mpuStepUnitLabel"
+							"text": new FormMessage( null, "mpuStepUnitLabel.text" )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"x": 245
+							"y": 60
+							"height": 30
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "warnTimeLabel"
+							"text": new FormMessage( null, "warnTimeLabel.text" )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"x": 25
+							"y": 95
+							"width": 72
+							"height": 30
+						} )
+						add( new FormComponent( "javax.swing.JSpinner" ) {
+							name: "warnTimeSpinner"
+							"model": new javax.swing.SpinnerNumberModel( 30, 0, 60, 1 )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"x": 115
+							"y": 95
+							"width": 126
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "warnTimeUnitLabel"
+							"text": new FormMessage( null, "warnTimeUnitLabel.text" )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"x": 245
+							"y": 95
+							"height": 30
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "timeStepLabel"
+							"text": new FormMessage( null, "timeStepLabel.text" )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"x": 25
+							"y": 130
+							"width": 72
+							"height": 30
+						} )
+						add( new FormComponent( "javax.swing.JSpinner" ) {
+							name: "timeStepLabelSpinner"
+							"model": new javax.swing.SpinnerNumberModel( 0.1f, 0.0f, 10.0f, 0.1f )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"x": 115
+							"y": 130
+							"width": 126
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "timeStepUnitLabel"
+							"text": new FormMessage( null, "timeStepUnitLabel.text" )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"x": 245
+							"y": 130
+							"height": 30
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "CongfigButton"
+							"text": new FormMessage( null, "CongfigButton.text" )
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "CongfigButtonActionPerformed", true ) )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"x": 275
+							"y": 75
+							"height": 30
+							"width": 80
+						} )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 10
+						"y": 20
+						"width": 370
+						"height": 190
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+						name: "readPanel"
+						"border": new javax.swing.border.TitledBorder( #EtchedBorder3, "i18nKey=readPanel.border", 4, 0, new java.awt.Font( "华光粗圆_CNKI", 0, 14 ), sfield java.awt.SystemColor activeCaption )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "tempLmtLabel1"
+							"text": new FormMessage( null, "tempLmtLabel1.text" )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"x": 21
+							"y": 42
+							"height": 30
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "tempLmtText"
+							"editable": false
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"x": 85
+							"y": 45
+							"width": 50
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "tempLmtUnitLabel1"
+							"text": new FormMessage( null, "tempLmtUnitLabel1.text" )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"x": 140
+							"y": 42
+							"height": 30
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "mpuStepLabel1"
+							"text": new FormMessage( null, "mpuStepLabel1.text" )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"x": 182
+							"y": 42
+							"height": 30
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "mpuStepText"
+							"editable": false
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"x": 260
+							"y": 45
+							"width": 48
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "mpuStepUnitLabel1"
+							"text": new FormMessage( null, "mpuStepUnitLabel1.text" )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"x": 313
+							"y": 42
+							"height": 30
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "warnTimeLabel1"
+							"text": new FormMessage( null, "warnTimeLabel1.text" )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"x": 21
+							"y": 77
+							"height": 30
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "warnTimeText"
+							"editable": false
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"x": 85
+							"y": 80
+							"width": 50
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "warnTimeUnitLabel1"
+							"text": new FormMessage( null, "warnTimeUnitLabel1.text" )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"x": 140
+							"y": 77
+							"height": 30
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "timeStepLabel1"
+							"text": new FormMessage( null, "timeStepLabel1.text" )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"x": 182
+							"y": 77
+							"width": 72
+							"height": 30
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "timeStepText"
+							"editable": false
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"x": 260
+							"y": 80
+							"width": 48
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "timeStepUnitLabel1"
+							"text": new FormMessage( null, "timeStepUnitLabel1.text" )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+							"x": 313
+							"y": 77
+							"height": 30
+						} )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"width": 370
+						"height": 135
+						"x": 10
+						"y": 245
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
+						"$columnSpecs": "0:1.0, 80, 80"
+						"$rowSpecs": "0"
+						"$hGap": 5
+						"$vGap": 5
+					} ) {
+						name: "buttonBar3"
+						"border": new javax.swing.border.EmptyBorder( 12, 0, 0, 0 )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "StartButton"
+							"text": new FormMessage( null, "StartButton.text" )
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "StartButtonActionPerformed", true ) )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+							"gridx": 1
+							"gridy": 0
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "closeButton"
+							"text": new FormMessage( null, "closeButton.text" )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+							"gridx": 2
+							"gridy": 0
+						} )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"width": 374
+						"height": 42
+						"x": 5
+						"y": 205
+					} )
+				}, new FormLayoutConstraints( null ) {
+					"title": new FormMessage( null, "configPane2.title" )
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "North"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "ZYXlabel"
+				"text": new FormMessage( null, "ZYXlabel.text" )
+				"horizontalAlignment": 4
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "South"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 95, 60 )
+			"size": new java.awt.Dimension( 400, 475 )
+		} )
+	}
+}
