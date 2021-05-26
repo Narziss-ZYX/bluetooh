@@ -66,9 +66,9 @@ new FormModel {
 							"editable": false
 							addEvent( new FormEvent( "java.beans.PropertyChangeListener", "propertyChange", "warnTextFieldPropertyChange", true, "foreground" ) )
 						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-							"x": 100
+							"x": 95
 							"y": 30
-							"width": 51
+							"width": 70
 						} )
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"width": 188

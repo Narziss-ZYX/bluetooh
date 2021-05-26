@@ -8,20 +8,21 @@ import java.util.regex.Pattern;
 
 public class ExtractNum {
     //全局变量
-    public static float temp = 0;
-    public static short ax, ay, az = 0; //加速度
-    public static short gx, gy, gz = 0; //角速度
-    public static float fAX, fAY, fAZ = 0; // 三个姿态角（pitch俯仰角, roll滚转角, yaw偏航角）
+    
+    public static Number[] temp = new Number[1];
+    public static Number[] ax= new Number[1], ay= new Number[1], az = new Number[1]; //加速度
+    public static Number[] gx= new Number[1], gy= new Number[1], gz = new Number[1]; //角速度
+    public static Number[] fAX= new Number[1], fAY= new Number[1], fAZ = new Number[1]; // 三个姿态角（pitch俯仰角, roll滚转角, yaw偏航角）
     public static int Warn;
     public static int g_mpustep; //震动检测灵敏度
     public static int g_warntime; //报警时长
     public static int tempLmt; //震动检测灵敏度
-    public static float g_upstep; //上传时间
+    public static int g_upstep; //上传时间
     //下发
     public static int config_mpustep;
     public static int config_warntime; //报警时长
     public static int config_tempLmt; //震动检测灵敏度
-    public static Double config_upstep; //上传时间
+    public static int config_upstep; //上传时间
     public static int g_bUpingFlag = 0;
     //控制上传标志位
     public static boolean StartButtonFlag = false;
@@ -29,6 +30,18 @@ public class ExtractNum {
     //设置参数标志位
     public static boolean ConfigNumFlag = false;
 
+    public static void initNum(){
+        temp[0]= 0;
+        ax[0] =  0;
+        ay[0] =  0;
+        az[0] =  0;
+        gx[0] =  0;
+        gy[0] =  0;
+        gz[0] =  0;
+        fAX[0] = 0;
+        fAY[0] = 0;
+        fAZ[0] = 0;
+    }
     /**
      * 正则表达式匹配两个指定字符串中间的内容
      *
@@ -91,89 +104,71 @@ public class ExtractNum {
         return true;
     }
 
-    public static void ExtractNumFromString(String str) {
-        String rgex = "T:(.*?),";
-        String[] list;
-        String result = getSubUtilSimple(str, rgex);
-        list = result.split(" ");
-        temp = Float.parseFloat(list[list.length - 1]);  //温度数据获取
-        //加速度
-        rgex = "A:(.*?),";
-        result = getSubUtilSimple(str, rgex);
-        list = result.split(" ");
-        int count = 0;
-        for (int i = 0; i < list.length; i++) {
-            if (NumberType(list[i])) {
-                count++;
-                if (count == 1)
-                    ax = Short.parseShort(list[i]);
-                else if (count == 2)
-                    ay = Short.parseShort(list[i]);
-                else if (count == 3)
-                    az = Short.parseShort(list[i]);
+    /***
+     * 去除String数组中的空值
+     */
+    public static String[] deleteArrayNull(String string[]) {
+        String strArr[] = string;
+
+        // step1: 定义一个list列表，并循环赋值
+        ArrayList<String> strList = new ArrayList<String>();
+        for (int i = 0; i < strArr.length; i++) {
+            strList.add(strArr[i]);
+        }
+
+        // step2: 删除list列表中所有的空值
+        while (strList.remove(null)) ;
+        while (strList.remove("")) ;
+
+        // step3: 把list列表转换给一个新定义的中间数组，并赋值给它
+        String strArrLast[] = strList.toArray(new String[strList.size()]);
+
+        return strArrLast;
+    }
+
+    public static void ProcNumString(String str) {
+        if (str.charAt(0) == 'T' && str.length() >= 60) {
+            String[] list = deleteArrayNull(str.split("[:, \n]"));
+            for (int i = 0; i < list.length; ++i) {
+                switch (list[i]) {
+                    case "T" -> {
+                        temp[0] = Float.parseFloat(list[i + 1]);
+                        ++i;
+                    }
+                    case "A" -> {
+                        ax[0] = Short.parseShort(list[i + 1]);
+                        ay[0] = Short.parseShort(list[i + 2]);
+                        az[0] = Short.parseShort(list[i + 3]);
+                        i += 3;
+                    }
+                    case "G" -> {
+                        gx[0] = Short.parseShort(list[i + 1]);
+                        gy[0] = Short.parseShort(list[i + 2]);
+                        gz[0] = Short.parseShort(list[i + 3]);
+                        i += 3;
+                    }
+                    case "Z" -> {
+                        fAX[0] = Float.parseFloat(list[i + 1]);
+                        fAY[0] = Float.parseFloat(list[i + 2]);
+                        fAZ[0] = Float.parseFloat(list[i + 3]);
+                        i += 3;
+                    }
+                    case "S" -> {
+                        tempLmt = Integer.parseInt(list[i + 1]);
+                        g_mpustep = Integer.parseInt(list[i + 2]);
+                        g_warntime = Integer.parseInt(list[i + 3]);
+                        g_upstep = Integer.parseInt(list[i + 4]);
+                        i += 4;
+                    }
+                    case "W" -> {
+                        Warn = Integer.parseInt(list[i + 1]);
+                        ++i;
+                    }
+                }
             }
         }
-        //角速度
-        rgex = "G:(.*?),";
-        result = getSubUtilSimple(str, rgex);
-        list = result.split(" ");
-        count = 0;
-        for (int i = 0; i < list.length; i++) {
-            if (NumberType(list[i])) {
-                count++;
-                if (count == 1)
-                    gx = Short.parseShort(list[i]);
-                else if (count == 2)
-                    gy = Short.parseShort(list[i]);
-                else if (count == 3)
-                    gz = Short.parseShort(list[i]);
-            }
-        }
-        //姿态角
-        rgex = "Z:(.*?),";
-        result = getSubUtilSimple(str, rgex);
-        list = result.split(" ");
-        count = 0;
-        for (int i = 0; i < list.length; i++) {
-            if (NumberType(list[i])) {
-                count++;
-                if (count == 1)
-                    fAX = Float.parseFloat(list[i]);
-                else if (count == 2)
-                    fAY = Float.parseFloat(list[i]);
-                else if (count == 3)
-                    fAZ = Float.parseFloat(list[i]);
-            }
-        }
-        //参数
-        rgex = "S:(.*?),";
-        result = getSubUtilSimple(str, rgex);
-        list = result.split(" ");
-        count = 0;
-        for (int i = 0; i < list.length; i++) {
-            if (NumberType(list[i])) {
-                count++;
-                if (count == 1)
-                    tempLmt = Integer.parseInt(list[i]);
-                else if (count == 2)
-                    g_mpustep = Integer.parseInt(list[i]);
-                else if (count == 3)
-                    g_warntime = Integer.parseInt(list[i]);
-                else if (count == 4)
-                    g_upstep = Float.parseFloat(list[i]);
-            }
-        }
-        //报警
-        rgex = "W:(.*?)\n";
-        result = getSubUtilSimple(str, rgex);
-        list = result.split(" ");
-        Warn = Integer.parseInt(list[list.length - 1]);  //温度数据获取
-        System.out.format("T:%4f,A:%6d %6d %6d,G:%6d %6d %6d,Z:%5f %5f %5f,S:%4d %4d %4d %f,W:%d\n", temp, ax, ay, az, gx, gy, gz, fAX, fAY, fAZ, tempLmt, g_mpustep, g_warntime, g_upstep, Warn);
     }
 
 
-    public static void main(String[] args) {
-        String str = "T: 24.9,A:   774   1350  16734,G:    -1     -1      1,Z:   0.1    0.0    0.4,S:  28  4  30  0.1,W:0\n";
-        ExtractNumFromString(str);
-    }
+
 }

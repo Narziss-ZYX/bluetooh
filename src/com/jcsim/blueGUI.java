@@ -7,12 +7,8 @@ package com.jcsim;
 import java.awt.event.*;
 import java.beans.*;
 import javax.swing.event.*;
-import javax.swing.plaf.*;
 
-import com.formdev.flatlaf.FlatDarculaLaf;
 import com.formdev.flatlaf.FlatDarkLaf;
-import com.formdev.flatlaf.FlatLightLaf;
-import com.formdev.flatlaf.IntelliJTheme;
 
 import java.awt.*;
 import java.util.*;
@@ -44,65 +40,83 @@ public class blueGUI extends JFrame implements Runnable {
         });
     }
 
-    private void drawChart(String[] str) {
+//    private void drawChart(String[] str) {
+//        JFrame frame = new JFrame("Chart");
+//        DrawChart rtcp = DrawChart.createDrawChart(str[0], str[1], str[2]);
+//        frame.getContentPane().add(rtcp, new BorderLayout().CENTER);
+//        frame.pack();
+//        frame.setVisible(true);
+//        (new Thread(rtcp)).start();
+//    }
+    private void drawChart(Number[]src,ArrayList<RecData> ys,String[] str) {
         JFrame frame = new JFrame("Chart");
-        DrawChart rtcp = new DrawChart(str[0], str[1], str[2]);
+        DrawChart rtcp = DrawChart.createDrawChart(src,ys,str[0], str[1], str[2]);
         frame.getContentPane().add(rtcp, new BorderLayout().CENTER);
         frame.pack();
         frame.setVisible(true);
         (new Thread(rtcp)).start();
     }
 
+    private ArrayList<RecData> temp = new ArrayList<>();
+    private ArrayList<RecData> ax = new ArrayList<>();
+    private ArrayList<RecData> ay = new ArrayList<>();
+    private ArrayList<RecData> az = new ArrayList<>();
+    private ArrayList<RecData> gx = new ArrayList<>();
+    private ArrayList<RecData> gy = new ArrayList<>();
+    private ArrayList<RecData> gz = new ArrayList<>();
+    private ArrayList<RecData> fax = new ArrayList<>();
+    private ArrayList<RecData> fay = new ArrayList<>();
+    private ArrayList<RecData> faz = new ArrayList<>();
     //显示温度曲线
     private void tempButtonActionPerformed(ActionEvent e) {
         // TODO add your code here
-        drawChart(tempString);
+        drawChart(ExtractNum.temp,temp,tempString);
     }
 
     private void axButtonActionPerformed(ActionEvent e) {
         // TODO add your code here
-        drawChart(axString);
+        drawChart(ExtractNum.ax,ax,axString);
     }
 
     private void ayButtonActionPerformed(ActionEvent e) {
         // TODO add your code here
-        drawChart(ayString);
+        drawChart(ExtractNum.ay,ay,ayString);
     }
 
     private void azButtonActionPerformed(ActionEvent e) {
         // TODO add your code here
-        drawChart(azString);
+        drawChart(ExtractNum.az,az,azString);
     }
 
     private void gxButtonActionPerformed(ActionEvent e) {
         // TODO add your code here
-        drawChart(gxString);
+        drawChart(ExtractNum.gx,gx,gxString);
     }
 
     private void gyButtonActionPerformed(ActionEvent e) {
         // TODO add your code here
-        drawChart(gyString);
+        drawChart(ExtractNum.gy,gy,gyString);
     }
 
     private void gzButtonActionPerformed(ActionEvent e) {
         // TODO add your code here
-        drawChart(gzString);
+        drawChart(ExtractNum.gz,gz,gzString);
     }
 
     private void fAXButtonActionPerformed(ActionEvent e) {
         // TODO add your code here
-        drawChart(fAXString);
+        drawChart(ExtractNum.fAX,fax,fAXString);
     }
 
     private void fAYButtonActionPerformed(ActionEvent e) {
         // TODO add your code here
-        drawChart(fAYString);
+        drawChart(ExtractNum.fAY,fay,fAYString);
     }
 
     private void fAZButtonActionPerformed(ActionEvent e) {
         // TODO add your code here
         warnTextField.setForeground(new Color(186, 187, 187));
-        drawChart(fAZString);
+        drawChart(ExtractNum.fAZ,faz,fAZString);
     }
 
     private void warnTextFieldPropertyChange(PropertyChangeEvent e) {
@@ -119,7 +133,7 @@ public class blueGUI extends JFrame implements Runnable {
         ExtractNum.config_tempLmt = (int) tempLmtSpinner.getValue();
         ExtractNum.config_mpustep = (int) mpuStepSpinner.getValue();
         ExtractNum.config_warntime = (int) warnTimeSpinner.getValue();
-        ExtractNum.config_upstep = (Double) timeStepLabelSpinner.getValue();
+        ExtractNum.config_upstep = (int)((Double) timeStepLabelSpinner.getValue() * 1000); //ms单位
         ExtractNum.ConfigNumFlag = true;
     }
 
@@ -275,7 +289,7 @@ public class blueGUI extends JFrame implements Runnable {
                     warnTextField.setEditable(false);
                     warnTextField.addPropertyChangeListener("foreground", e -> warnTextFieldPropertyChange(e));
                     warnPanel.add(warnTextField);
-                    warnTextField.setBounds(100, 30, 51, warnTextField.getPreferredSize().height);
+                    warnTextField.setBounds(95, 30, 70, warnTextField.getPreferredSize().height);
 
                     {
                         // compute preferred size
@@ -816,29 +830,36 @@ public class blueGUI extends JFrame implements Runnable {
         (new Thread(BlueToothGUI)).start();
     }
 
+    public void refreshUI(){
+        tempButton.setText(String.format("%.1f", ExtractNum.temp[0]));
+        String warnText = "";
+        switch (ExtractNum.Warn){
+            case 0 : warnTextField.setText("无");break;
+            case 1:warnTextField.setText("温度报警");break;
+            case 2:warnTextField.setText("震动报警");break;
+        }
+        axButton.setText(String.format("%d", ExtractNum.ax[0]));
+        ayButton.setText(String.format("%d", ExtractNum.ay[0]));
+        azButton.setText(String.format("%d", ExtractNum.az[0]));
+        gxButton.setText(String.format("%d", ExtractNum.gx[0]));
+        gyButton.setText(String.format("%d", ExtractNum.gy[0]));
+        gzButton.setText(String.format("%d", ExtractNum.gz[0]));
+        fAXButton.setText(String.format("%.1f", ExtractNum.fAX[0]));
+        fAYButton.setText(String.format("%.1f", ExtractNum.fAY[0]));
+        fAZButton.setText(String.format("%.1f", ExtractNum.fAZ[0]));
+        tempLmtText.setText(String.format("%d", ExtractNum.tempLmt));
+        mpuStepText.setText(String.format("%d", ExtractNum.g_mpustep));
+        warnTimeText.setText(String.format("%d", ExtractNum.g_warntime));
+        timeStepText.setText(String.format("%.1f", (float)(ExtractNum.g_upstep)/1000));
+    }
     @Override
     public void run() {
         // TODO Auto-generated method stub
-        while (true) {
-            try {
-                tempButton.setText(String.format("%.1f", ExtractNum.temp));
-                warnTextField.setText(String.format("%d", ExtractNum.g_warntime));
-                axButton.setText(String.format("%d", ExtractNum.ax));
-                ayButton.setText(String.format("%d", ExtractNum.ay));
-                azButton.setText(String.format("%d", ExtractNum.az));
-                gxButton.setText(String.format("%d", ExtractNum.gx));
-                gyButton.setText(String.format("%d", ExtractNum.gy));
-                gzButton.setText(String.format("%d", ExtractNum.gz));
-                fAXButton.setText(String.format("%.1f", ExtractNum.fAX));
-                fAYButton.setText(String.format("%.1f", ExtractNum.fAY));
-                fAZButton.setText(String.format("%.1f", ExtractNum.fAZ));
-                tempLmtText.setText(String.format("%d", ExtractNum.tempLmt));
-                mpuStepText.setText(String.format("%d", ExtractNum.g_mpustep));
-                warnTimeText.setText(String.format("%d", ExtractNum.g_warntime));
-                timeStepText.setText(String.format("%d", ExtractNum.g_upstep));
-                this.repaint();
-            } catch (Exception e) {
-            }
-        }
+//        while (true) {
+//            try {
+//
+//            } catch (Exception e) {
+//            }
+//        }
     }
 }

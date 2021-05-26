@@ -19,9 +19,9 @@ public class BlueToothGUI extends JFrame implements Runnable {
     }
 
     private void initUI() {
-        String[] accelerate_str={"ax","ay","az",String.format("%d",ExtractNum.ax),String.format("%d",ExtractNum.ax),String.format("%d",ExtractNum.ax)};
-        String[] angV_str={"gx","gy","gz",String.format("%d",ExtractNum.gx),String.format("%d",ExtractNum.gx),String.format("%d",ExtractNum.gx)};
-        String[] altitude_str={"俯仰角","横滚角","航向角",String.format("%.1f",ExtractNum.fAX),String.format("%.1f",ExtractNum.fAY),String.format("%.1f",ExtractNum.fAZ)};
+        String[] accelerate_str={"ax","ay","az",String.format("%d",ExtractNum.ax[0]),String.format("%d",ExtractNum.ax[0]),String.format("%d",ExtractNum.ax[0])};
+        String[] angV_str={"gx","gy","gz",String.format("%d",ExtractNum.gx[0]),String.format("%d",ExtractNum.gx[0]),String.format("%d",ExtractNum.gx[0])};
+        String[] altitude_str={"俯仰角","横滚角","航向角",String.format("%.1f",ExtractNum.fAX[0]),String.format("%.1f",ExtractNum.fAY[0]),String.format("%.1f",ExtractNum.fAZ[0])};
 
         Border emptyPanl, lineBorder, etchedBorder, matteBorder, titleBorder1, titleBorder2, titleBorderCenter_Left, titleBorderCenter_CENTER, titleBorderBottom_center, titleBorderBelowBottom_Center, titleWarnSta;
         emptyPanl = BorderFactory.createEmptyBorder(10, 10, 10, 10);  //带标题边框
@@ -113,7 +113,7 @@ public class BlueToothGUI extends JFrame implements Runnable {
         JPanel tempPanel = new JPanel();
         JButton tempButton = new JButton();
         tempButton.setPreferredSize(new Dimension(70,30));
-        tempButton.setText(String.format("%.1f",ExtractNum.temp));
+        tempButton.setText(String.format("%.1f",ExtractNum.temp[0]));
         tempButton.setBackground(color2);
         tempButton.setForeground(Color.black);
         tempButton.setFont(new Font(Font.SERIF, Font.PLAIN, 18));
