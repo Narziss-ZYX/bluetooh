@@ -53,6 +53,9 @@ public class blueGUI extends JFrame implements Runnable {
         DrawChart rtcp = DrawChart.createDrawChart(src,ys,str[0], str[1], str[2]);
         frame.getContentPane().add(rtcp, new BorderLayout().CENTER);
         frame.pack();
+        frame.setSize(720,500);
+//        frame.setPreferredSize(new Dimension(100,100));
+        frame.setLocationRelativeTo(getOwner());
         frame.setVisible(true);
         (new Thread(rtcp)).start();
     }
@@ -597,7 +600,7 @@ public class blueGUI extends JFrame implements Runnable {
                     CongfigButton.setText(bundle.getString("CongfigButton.text"));
                     CongfigButton.addActionListener(e -> CongfigButtonActionPerformed(e));
                     configPanel.add(CongfigButton);
-                    CongfigButton.setBounds(275, 75, 80, 30);
+                    CongfigButton.setBounds(275, 75, 85, 30);
 
                     {
                         // compute preferred size
@@ -717,6 +720,7 @@ public class blueGUI extends JFrame implements Runnable {
 
                     //---- closeButton ----
                     closeButton.setText(bundle.getString("closeButton.text"));
+                    closeButton.addActionListener(e -> closeButtonActionPerformed(e));
                     buttonBar3.add(closeButton, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 0, 0), 0, 0));

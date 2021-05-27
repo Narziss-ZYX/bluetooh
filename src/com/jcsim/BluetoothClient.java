@@ -29,6 +29,9 @@ public class BluetoothClient {
      */
     public interface OnClientListener {
         void onConnected(DataInputStream inputStream, OutputStream outputStream);
+
+        void onConnectedSend(OutputStream outputStream);
+
         void onConnectionFailed();
         void onDisconnected();
         void onClose();
