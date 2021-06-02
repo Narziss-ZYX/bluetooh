@@ -67,7 +67,7 @@ public class BluetoothClientService {
                             System.out.println("客户端开始监听...");
                             SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss");
                             while (true) {
-                                Thread.sleep(1);
+                                Thread.sleep(10);
                                 byte[] buffer = new byte[1024];
                                 int bytes = 0; //字符串长度
                                 int ch;  // 读取字符的变量

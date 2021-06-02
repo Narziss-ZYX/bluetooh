@@ -557,7 +557,7 @@ public class blueGUI extends JFrame implements Runnable {
                     mpuStepLabel.setBounds(25, 60, mpuStepLabel.getPreferredSize().width, 30);
 
                     //---- mpuStepSpinner ----
-                    mpuStepSpinner.setModel(new SpinnerNumberModel(7, 0, 9, 1));
+                    mpuStepSpinner.setModel(new SpinnerNumberModel(1, 0, 9, 1));
                     configPanel.add(mpuStepSpinner);
                     mpuStepSpinner.setBounds(115, 60, 126, mpuStepSpinner.getPreferredSize().height);
 
@@ -633,6 +633,7 @@ public class blueGUI extends JFrame implements Runnable {
 
                     //---- tempLmtText ----
                     tempLmtText.setEditable(false);
+                    tempLmtText.setText(bundle.getString("tempLmtText.text"));
                     readPanel.add(tempLmtText);
                     tempLmtText.setBounds(85, 45, 50, tempLmtText.getPreferredSize().height);
 
@@ -648,6 +649,7 @@ public class blueGUI extends JFrame implements Runnable {
 
                     //---- mpuStepText ----
                     mpuStepText.setEditable(false);
+                    mpuStepText.setText(bundle.getString("mpuStepText.text"));
                     readPanel.add(mpuStepText);
                     mpuStepText.setBounds(260, 45, 48, mpuStepText.getPreferredSize().height);
 
@@ -663,6 +665,7 @@ public class blueGUI extends JFrame implements Runnable {
 
                     //---- warnTimeText ----
                     warnTimeText.setEditable(false);
+                    warnTimeText.setText(bundle.getString("warnTimeText.text"));
                     readPanel.add(warnTimeText);
                     warnTimeText.setBounds(85, 80, 50, warnTimeText.getPreferredSize().height);
 
@@ -678,6 +681,7 @@ public class blueGUI extends JFrame implements Runnable {
 
                     //---- timeStepText ----
                     timeStepText.setEditable(false);
+                    timeStepText.setText(bundle.getString("timeStepText.text"));
                     readPanel.add(timeStepText);
                     timeStepText.setBounds(260, 80, 48, timeStepText.getPreferredSize().height);
 

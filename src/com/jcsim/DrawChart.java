@@ -39,9 +39,13 @@ public class DrawChart extends ChartPanel implements Runnable {
         this.timeSeries = timeSeries;
         this.datas = datas;
         this.src = src;
-        for (RecData data : this.datas){
-            timeSeries.add(data.ms,data.data);
+        for(int i = 0;i<this.datas.size();i++)
+        {
+            timeSeries.addOrUpdate(datas.get(i).ms,datas.get(i).data);
         }
+//        for (RecData data : this.datas){
+//            timeSeries.addOrUpdate(data.ms,data.data);
+//        }
     }
 
 
@@ -97,7 +101,7 @@ public class DrawChart extends ChartPanel implements Runnable {
                 RecData data = new RecData( src[0],new Millisecond());
                 timeSeries.addOrUpdate(data.ms,data.data);
                 datas.add(data);
-                while (datas.size() >= 100){
+                while (datas.size() >= 500){
                     datas.remove(0);
                 }
                 Thread.sleep(100);

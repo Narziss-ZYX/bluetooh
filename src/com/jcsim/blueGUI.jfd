@@ -333,7 +333,7 @@ new FormModel {
 						} )
 						add( new FormComponent( "javax.swing.JSpinner" ) {
 							name: "mpuStepSpinner"
-							"model": new javax.swing.SpinnerNumberModel( 7, 0, 9, 1 )
+							"model": new javax.swing.SpinnerNumberModel( 1, 0, 9, 1 )
 						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 							"x": 115
 							"y": 60
@@ -427,6 +427,7 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JTextField" ) {
 							name: "tempLmtText"
 							"editable": false
+							"text": new FormMessage( null, "tempLmtText.text" )
 						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 							"x": 85
 							"y": 45
@@ -451,6 +452,7 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JTextField" ) {
 							name: "mpuStepText"
 							"editable": false
+							"text": new FormMessage( null, "mpuStepText.text" )
 						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 							"x": 260
 							"y": 45
@@ -475,6 +477,7 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JTextField" ) {
 							name: "warnTimeText"
 							"editable": false
+							"text": new FormMessage( null, "warnTimeText.text" )
 						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 							"x": 85
 							"y": 80
@@ -500,6 +503,7 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JTextField" ) {
 							name: "timeStepText"
 							"editable": false
+							"text": new FormMessage( null, "timeStepText.text" )
 						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 							"x": 260
 							"y": 80
